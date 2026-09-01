@@ -1,0 +1,276 @@
+<!-- =====================================================
+     LOGIN COMPONENT
+===================================================== -->
+
+<div class="login-component">
+
+  <!-- =========================================
+       LOADING
+  ========================================== -->
+
+  <div
+    class="login-loader"
+    *ngIf="LoginContinue"
+  >
+
+    <app-welcome-loader
+      [msg]="msg"
+    ></app-welcome-loader>
+
+  </div>
+
+
+  <!-- =========================================
+       LOGIN CARD
+  ========================================== -->
+
+  <div
+    class="login-card"
+    *ngIf="!LoginContinue"
+  >
+
+    <!-- CARD HEADER -->
+
+    <div class="login-card-header">
+
+      <div class="login-card-icon">
+
+        <mat-icon>
+          lock
+        </mat-icon>
+
+      </div>
+
+
+      <div>
+
+        <h2>
+          Welcome Back
+        </h2>
+
+        <p>
+          Login to your Expense Tracker account
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         LOGIN FORM
+    ========================================== -->
+
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onLogin('default')"
+      class="login-form"
+    >
+
+
+      <!-- EMAIL -->
+
+      <mat-form-field
+        appearance="outline"
+        class="full-width"
+      >
+
+        <mat-label>
+          Email Address
+        </mat-label>
+
+        <mat-icon matPrefix>
+          email
+        </mat-icon>
+
+        <input
+          matInput
+          placeholder="Enter your registered email"
+          type="email"
+          formControlName="gmail"
+          autocomplete="email"
+        >
+
+
+        <!-- REQUIRED -->
+
+        <mat-error
+          *ngIf="
+            loginForm.get('gmail')?.hasError('required') &&
+            loginForm.get('gmail')?.touched
+          "
+        >
+
+          Email address is required
+
+        </mat-error>
+
+
+        <!-- INVALID EMAIL -->
+
+        <mat-error
+          *ngIf="
+            loginForm.get('gmail')?.hasError('email') &&
+            loginForm.get('gmail')?.touched
+          "
+        >
+
+          Enter a valid email address
+
+        </mat-error>
+
+      </mat-form-field>
+
+
+
+      <!-- PASSWORD -->
+
+      <mat-form-field
+        appearance="outline"
+        class="full-width"
+      >
+
+        <mat-label>
+          Password
+        </mat-label>
+
+        <mat-icon matPrefix>
+          lock
+        </mat-icon>
+
+        <input
+          matInput
+          [type]="hidePassword ? 'password' : 'text'"
+          placeholder="Enter your password"
+          formControlName="password"
+          autocomplete="current-password"
+        >
+
+
+        <!-- SHOW / HIDE PASSWORD -->
+
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hidePassword = !hidePassword"
+          aria-label="Toggle password visibility"
+        >
+
+          <mat-icon>
+
+            {{
+              hidePassword
+                ? 'visibility'
+                : 'visibility_off'
+            }}
+
+          </mat-icon>
+
+        </button>
+
+
+        <!-- PASSWORD ERROR -->
+
+        <mat-error
+          *ngIf="
+            loginForm.get('password')?.hasError('required') &&
+            loginForm.get('password')?.touched
+          "
+        >
+
+          Password is required
+
+        </mat-error>
+
+      </mat-form-field>
+
+
+
+      <!-- =========================================
+           LOGIN BUTTON
+      ========================================== -->
+
+      <button
+        mat-raised-button
+        type="submit"
+        class="login-button"
+        [disabled]="loginForm.invalid || LoginContinue"
+      >
+
+        <mat-spinner
+          *ngIf="LoginContinue"
+          diameter="20"
+        ></mat-spinner>
+
+
+        <mat-icon
+          *ngIf="!LoginContinue"
+        >
+          login
+        </mat-icon>
+
+
+        <span>
+
+          {{
+            LoginContinue
+              ? 'Logging in...'
+              : 'Login'
+          }}
+
+        </span>
+
+      </button>
+
+
+    </form>
+
+
+    <!-- =========================================
+         SECURITY INFORMATION
+    ========================================== -->
+
+    <div class="security-info">
+
+      <div class="security-icon">
+
+        <mat-icon>
+          verified_user
+        </mat-icon>
+
+      </div>
+
+
+      <div>
+
+        <strong>
+          Your data is secure
+        </strong>
+
+        <span>
+          Your account information is protected
+          with secure authentication.
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================
+         WAIT MESSAGE
+    ========================================== -->
+
+    <div
+      class="wait-message"
+      *ngIf="LoginContinue"
+    >
+
+      Please wait while we fetch your account details.
+
+    </div>
+
+  </div>
+
+</div>

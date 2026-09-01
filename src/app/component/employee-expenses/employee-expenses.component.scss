@@ -1,0 +1,634 @@
+/* =========================================================
+   EMPLOYEE EXPENSES PAGE
+   ========================================================= */
+
+.expenses-container {
+  min-height: calc(100vh - 64px);
+  padding: 32px 48px 48px;
+  background: #f8fafc;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+
+  font-size: 32px;
+  font-weight: 700;
+
+  color: #0f172a;
+  letter-spacing: -0.5px;
+}
+
+.page-header p {
+  margin: 0;
+
+  font-size: 16px;
+  color: #64748b;
+}
+
+
+/* =========================================================
+   ADD EXPENSE BUTTON
+   ========================================================= */
+
+.add-expense-button {
+  background: #0f766e !important;
+  color: white !important;
+
+  padding: 0 22px !important;
+  height: 44px;
+
+  border-radius: 8px !important;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.18);
+}
+
+.add-expense-button:hover {
+  background: #0d625c !important;
+}
+
+
+/* =========================================================
+   ADD EXPENSE CARD
+   ========================================================= */
+
+.expense-form-card {
+  margin-bottom: 30px;
+
+  padding: 28px 30px 30px;
+
+  border-radius: 14px !important;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow:
+    0 4px 16px rgba(15, 23, 42, 0.05);
+
+  box-sizing: border-box;
+}
+
+
+/* FORM HEADER */
+
+.expense-form-header {
+  margin-bottom: 26px;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.expense-form-header h2 {
+  margin: 0 0 6px;
+
+  font-size: 21px;
+  font-weight: 650;
+
+  color: #0f172a;
+}
+
+.expense-form-header p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+.expense-form {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  column-gap: 24px;
+  row-gap: 4px;
+
+  width: 100%;
+}
+
+
+/* FULL WIDTH FIELD */
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   MATERIAL FORM FIELDS
+   ========================================================= */
+
+.expense-form mat-form-field {
+  width: 100%;
+}
+
+.expense-form mat-form-field {
+  margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.expense-form textarea {
+  min-height: 100px;
+
+  resize: vertical;
+}
+
+
+/* =========================================================
+   FORM ACTIONS
+   ========================================================= */
+
+.form-actions {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 18px;
+  padding-top: 22px;
+
+  border-top: 1px solid #e2e8f0;
+}
+
+
+/* CANCEL */
+
+.cancel-button {
+  height: 44px;
+
+  padding: 0 20px !important;
+
+  border-radius: 8px !important;
+
+  color: #475569 !important;
+
+  font-weight: 600;
+}
+
+.cancel-button:hover {
+  background: #f1f5f9 !important;
+}
+
+
+/* SAVE */
+
+.save-expense-button {
+  height: 44px;
+
+  padding: 0 24px !important;
+
+  border-radius: 8px !important;
+
+  background: #0f766e !important;
+
+  color: #ffffff !important;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 4px 10px rgba(15, 118, 110, 0.18);
+}
+
+.save-expense-button:hover {
+  background: #0d625c !important;
+}
+
+
+/* =========================================================
+   SUMMARY CARD
+   ========================================================= */
+
+.summary-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  width: 100%;
+
+  max-width: 430px;
+
+  padding: 22px 24px;
+
+  margin-bottom: 30px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 4px 16px rgba(15, 23, 42, 0.05);
+
+  box-sizing: border-box;
+}
+
+
+/* SUMMARY ICON */
+
+.summary-icon {
+  width: 54px;
+  height: 54px;
+
+  min-width: 54px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: #ccfbf1;
+
+  color: #0f766e;
+}
+
+.summary-icon mat-icon {
+  font-size: 27px;
+
+  width: 27px;
+  height: 27px;
+}
+
+
+/* SUMMARY TEXT */
+
+.summary-card span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-size: 14px;
+
+  color: #64748b;
+}
+
+.summary-card strong {
+  display: block;
+
+  font-size: 27px;
+
+  font-weight: 700;
+
+  color: #0f172a;
+}
+
+
+/* =========================================================
+   FILTER CARD
+   ========================================================= */
+
+.filter-card {
+  margin-bottom: 30px;
+
+  padding: 26px 28px;
+
+  border-radius: 14px !important;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow:
+    0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+.filter-card h2 {
+  margin: 0 0 20px;
+
+  font-size: 20px;
+
+  font-weight: 650;
+
+  color: #0f172a;
+}
+
+.filter-row {
+  display: grid;
+
+  grid-template-columns:
+    1.5fr
+    1fr
+    1fr
+    auto;
+
+  gap: 16px;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.table-card {
+  padding: 0 !important;
+
+  overflow: hidden;
+
+  border-radius: 14px !important;
+
+  border: 1px solid #e2e8f0;
+
+  box-shadow:
+    0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+
+/* TABLE HEADER */
+
+.table-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 24px 28px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.table-header h2 {
+  margin: 0 0 5px;
+
+  font-size: 20px;
+
+  font-weight: 650;
+
+  color: #0f172a;
+}
+
+.table-header span {
+  font-size: 14px;
+
+  color: #64748b;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  min-width: 900px;
+}
+
+thead {
+  background: #f8fafc;
+}
+
+th {
+  padding: 15px 18px;
+
+  text-align: left;
+
+  font-size: 13px;
+
+  font-weight: 650;
+
+  color: #475569;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.3px;
+
+  white-space: nowrap;
+}
+
+td {
+  padding: 17px 18px;
+
+  border-top: 1px solid #f1f5f9;
+
+  font-size: 14px;
+
+  color: #334155;
+}
+
+tbody tr:hover {
+  background: #f8fafc;
+}
+
+
+/* =========================================================
+   CATEGORY BADGE
+   ========================================================= */
+
+.category {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 5px 10px;
+
+  border-radius: 20px;
+
+  background: #f3e8ff;
+
+  color: #7c3aed;
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   AMOUNT
+   ========================================================= */
+
+.amount {
+  color: #0f766e;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty {
+  padding: 60px 20px !important;
+
+  text-align: center;
+
+  color: #94a3b8;
+}
+
+.empty mat-icon {
+  font-size: 44px;
+
+  width: 44px;
+  height: 44px;
+
+  margin-bottom: 10px;
+}
+
+.empty p {
+  margin: 0;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.loading {
+  min-height: 250px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  color: #64748b;
+}
+
+.loading p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   MATERIAL BUTTON ICON SPACING
+   ========================================================= */
+
+button mat-icon {
+  margin-right: 6px;
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .expenses-container {
+    padding: 28px 30px 40px;
+  }
+
+  .filter-row {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .filter-row button {
+    justify-self: start;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .expenses-container {
+    padding: 22px 16px 32px;
+  }
+
+  .page-header {
+    flex-direction: column;
+
+    gap: 18px;
+  }
+
+  .page-header h1 {
+    font-size: 27px;
+  }
+
+  .expense-form-card {
+    padding: 22px 18px 24px;
+  }
+
+  .expense-form {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: auto;
+  }
+
+  .form-actions {
+    grid-column: auto;
+
+    justify-content: stretch;
+
+    flex-direction: column-reverse;
+
+    gap: 10px;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+  .filter-row {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card {
+    max-width: 100%;
+  }
+
+  .table-header {
+    padding: 20px;
+  }
+
+}

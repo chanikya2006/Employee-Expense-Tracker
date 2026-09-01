@@ -1,0 +1,305 @@
+<div class="add-employee-container">
+
+  <div class="page-header">
+
+    <div>
+      <h1>Add Employee</h1>
+
+      <p>
+        Add a new employee to the company
+      </p>
+    </div>
+
+  </div>
+
+
+  <mat-card class="employee-card">
+
+    <mat-card-header>
+
+      <mat-card-title>
+        Employee Information
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        Enter the employee details below
+      </mat-card-subtitle>
+
+    </mat-card-header>
+
+
+    <mat-card-content>
+
+      <form [formGroup]="employeeForm">
+
+        <!-- ROW 1 -->
+
+        <div class="form-row">
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Employee ID</mat-label>
+
+            <input
+              matInput
+              formControlName="employeeId"
+              placeholder="EMP001"
+            >
+
+            <mat-error
+              *ngIf="employeeForm.get('employeeId')?.hasError('required')"
+            >
+              Employee ID is required
+            </mat-error>
+
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Name</mat-label>
+
+            <input
+              matInput
+              formControlName="name"
+              placeholder="Employee name"
+            >
+
+            <mat-error
+              *ngIf="employeeForm.get('name')?.hasError('required')"
+            >
+              Name is required
+            </mat-error>
+
+          </mat-form-field>
+
+        </div>
+
+
+        <!-- ROW 2 -->
+
+        <div class="form-row">
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Email</mat-label>
+
+            <input
+              matInput
+              type="email"
+              formControlName="email"
+              placeholder="employee@company.com"
+            >
+
+            <mat-error
+              *ngIf="employeeForm.get('email')?.hasError('required')"
+            >
+              Email is required
+            </mat-error>
+
+            <mat-error
+              *ngIf="employeeForm.get('email')?.hasError('email')"
+            >
+              Enter a valid email
+            </mat-error>
+
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Phone</mat-label>
+
+            <input
+              matInput
+              formControlName="phone"
+              placeholder="9876543210"
+            >
+
+            <mat-error
+              *ngIf="employeeForm.get('phone')?.hasError('required')"
+            >
+              Phone is required
+            </mat-error>
+
+          </mat-form-field>
+
+        </div>
+
+
+        <!-- ROW 3 -->
+
+        <div class="form-row">
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Department</mat-label>
+
+            <mat-select formControlName="department">
+
+              <mat-option value="Engineering">
+                Engineering
+              </mat-option>
+
+              <mat-option value="HR">
+                HR
+              </mat-option>
+
+              <mat-option value="Finance">
+                Finance
+              </mat-option>
+
+              <mat-option value="Marketing">
+                Marketing
+              </mat-option>
+
+              <mat-option value="Sales">
+                Sales
+              </mat-option>
+
+              <mat-option value="Operations">
+                Operations
+              </mat-option>
+
+            </mat-select>
+
+            <mat-error>
+              Department is required
+            </mat-error>
+
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Designation</mat-label>
+
+            <input
+              matInput
+              formControlName="designation"
+              placeholder="Software Engineer"
+            >
+
+            <mat-error
+              *ngIf="employeeForm.get('designation')?.hasError('required')"
+            >
+              Designation is required
+            </mat-error>
+
+          </mat-form-field>
+
+        </div>
+
+
+        <!-- ROW 4 -->
+
+        <div class="form-row">
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Joining Date</mat-label>
+
+            <input
+              matInput
+              type="date"
+              formControlName="joiningDate"
+            >
+
+            <mat-error
+              *ngIf="employeeForm.get('joiningDate')?.hasError('required')"
+            >
+              Joining date is required
+            </mat-error>
+
+          </mat-form-field>
+
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Monthly Salary</mat-label>
+
+            <span matTextPrefix>₹&nbsp;</span>
+
+            <input
+              matInput
+              type="number"
+              formControlName="salary"
+              placeholder="50000"
+            >
+
+            <mat-error
+              *ngIf="employeeForm.get('salary')?.hasError('required')"
+            >
+              Salary is required
+            </mat-error>
+
+          </mat-form-field>
+
+        </div>
+
+
+        <!-- ROW 5 -->
+
+        <div class="form-row">
+
+          <mat-form-field appearance="outline">
+
+            <mat-label>Status</mat-label>
+
+            <mat-select formControlName="status">
+
+              <mat-option value="Active">
+                Active
+              </mat-option>
+
+              <mat-option value="Inactive">
+                Inactive
+              </mat-option>
+
+            </mat-select>
+
+          </mat-form-field>
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div class="buttons">
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            [disabled]="isSubmitting"
+            (click)="addEmployee()"
+          >
+
+            <mat-icon>
+              person_add
+            </mat-icon>
+
+            {{ isSubmitting ? 'Adding...' : 'Add Employee' }}
+
+          </button>
+
+
+          <button
+            mat-button
+            type="button"
+            (click)="cancel()"
+          >
+
+            Cancel
+
+          </button>
+
+        </div>
+
+      </form>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>

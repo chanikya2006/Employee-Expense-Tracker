@@ -1,0 +1,255 @@
+<div class="employees-container">
+
+  <!-- PAGE HEADER -->
+
+  <div class="page-header">
+
+    <div>
+      <h1>Employees</h1>
+
+      <p>
+        Manage all employees in the company
+      </p>
+    </div>
+
+  </div>
+
+
+  <!-- SUMMARY -->
+
+  <div class="summary-grid">
+
+    <mat-card class="summary-card">
+
+      <div class="summary-icon">
+        <mat-icon>groups</mat-icon>
+      </div>
+
+      <div>
+        <span>Total Employees</span>
+
+        <strong>
+          {{ employees.length }}
+        </strong>
+      </div>
+
+    </mat-card>
+
+
+    <mat-card class="summary-card">
+
+      <div class="summary-icon">
+        <mat-icon>person</mat-icon>
+      </div>
+
+      <div>
+        <span>Active Employees</span>
+
+        <strong>
+          {{ activeEmployees }}
+        </strong>
+      </div>
+
+    </mat-card>
+
+
+    <mat-card class="summary-card">
+
+      <div class="summary-icon">
+        <mat-icon>account_balance_wallet</mat-icon>
+      </div>
+
+      <div>
+        <span>Total Monthly Salary</span>
+
+        <strong>
+          ₹{{ totalSalary | number }}
+        </strong>
+      </div>
+
+    </mat-card>
+
+  </div>
+
+
+  <!-- EMPLOYEE TABLE -->
+
+  <mat-card class="employee-card">
+
+    <div class="table-header">
+
+      <div>
+        <h2>Company Employees</h2>
+
+        <p>
+          Complete employee information
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="table-wrapper">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>Employee ID</th>
+
+            <th>Name</th>
+
+            <th>Email</th>
+
+            <th>Phone</th>
+
+            <th>Department</th>
+
+            <th>Designation</th>
+
+            <th>Joining Date</th>
+
+            <th>Salary</th>
+
+            <th>Status</th>
+
+            <th>Actions</th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="let employee of employees"
+          >
+
+            <td>
+              <strong>
+                {{ employee.employeeId }}
+              </strong>
+            </td>
+
+
+            <td>
+              {{ employee.name }}
+            </td>
+
+
+            <td>
+              {{ employee.email }}
+            </td>
+
+
+            <td>
+              {{ employee.phone }}
+            </td>
+
+
+            <td>
+              {{ employee.department }}
+            </td>
+
+
+            <td>
+              {{ employee.designation }}
+            </td>
+
+
+            <td>
+              {{ employee.joiningDate | date:'dd-MM-yyyy' }}
+            </td>
+
+
+            <td>
+
+              <strong class="salary">
+                ₹{{ employee.salary | number }}
+              </strong>
+
+            </td>
+
+
+            <td>
+
+              <span
+                class="status"
+                [class.active]="employee.status === 'Active'"
+                [class.inactive]="employee.status === 'Inactive'"
+              >
+                {{ employee.status }}
+              </span>
+
+            </td>
+
+
+            <td>
+
+              <button
+                mat-icon-button
+                color="primary"
+                matTooltip="Edit Employee"
+                (click)="editEmployee(employee)"
+              >
+
+                <mat-icon>
+                  edit
+                </mat-icon>
+
+              </button>
+
+
+              <button
+                mat-icon-button
+                color="warn"
+                matTooltip="Delete Employee"
+                (click)="deleteEmployee(employee._id)"
+              >
+
+                <mat-icon>
+                  delete
+                </mat-icon>
+
+              </button>
+
+            </td>
+
+          </tr>
+
+
+          <!-- EMPTY -->
+
+          <tr
+            *ngIf="employees.length === 0"
+          >
+
+            <td
+              colspan="10"
+              class="empty"
+            >
+
+              <mat-icon>
+                group_off
+              </mat-icon>
+
+              <p>
+                No employees found.
+              </p>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </mat-card>
+
+</div>

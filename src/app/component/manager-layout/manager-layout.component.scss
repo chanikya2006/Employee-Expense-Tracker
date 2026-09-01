@@ -1,0 +1,589 @@
+/* =========================================================
+   MANAGER LAYOUT
+   ========================================================= */
+
+.manager-container {
+  width: 100%;
+  height: 100vh;
+
+  background: #f7f8fc;
+
+  font-family: 'Inter', sans-serif;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.manager-sidenav {
+  width: 290px;
+
+  padding: 0;
+
+  background: #ffffff;
+
+  border: none;
+
+  box-shadow:
+    8px 0 30px rgba(15, 23, 42, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   SIDEBAR BRAND
+   ========================================================= */
+
+.sidenav-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 26px 24px 22px;
+
+  border-bottom: 1px solid #eef0f4;
+}
+
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  background: #eef2ff;
+
+  color: #3f51b5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.brand-icon mat-icon {
+  font-size: 23px;
+
+  width: 23px;
+  height: 23px;
+}
+
+
+.brand-title {
+  font-size: 17px;
+
+  font-weight: 700;
+
+  color: #172033;
+
+  line-height: 1.2;
+}
+
+
+.brand-subtitle {
+  margin-top: 4px;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  color: #8992a5;
+}
+
+
+/* =========================================================
+   SIDEBAR SECTIONS
+   ========================================================= */
+
+.sidenav-section {
+  padding: 25px 14px 0;
+}
+
+
+.sidenav-account {
+  margin-top: 22px;
+
+  padding: 20px 14px 0;
+
+  border-top: 1px solid #eef0f4;
+}
+
+
+.section-title {
+  padding: 0 12px 10px;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  color: #9aa2b1;
+}
+
+
+/* =========================================================
+   SIDEBAR ITEMS
+   ========================================================= */
+
+.sidenav-item {
+  width: 100%;
+
+  min-height: 48px;
+
+  margin: 4px 0;
+
+  padding: 0 14px !important;
+
+  border-radius: 10px;
+
+  display: flex !important;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: 14px;
+
+  color: #4b5567;
+
+  font-family: 'Inter', sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  text-align: left;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.sidenav-item mat-icon {
+  width: 21px;
+
+  height: 21px;
+
+  font-size: 21px;
+
+  color: #7b8496;
+
+  transition: color 0.2s ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.sidenav-item:hover {
+  background: #f5f7fb;
+
+  color: #29334d;
+
+  transform: translateX(2px);
+}
+
+
+.sidenav-item:hover mat-icon {
+  color: #3f51b5;
+}
+
+
+/* =========================================================
+   ACTIVE ITEM
+   ========================================================= */
+
+.sidenav-item.active {
+  background: #eef2ff;
+
+  color: #3f51b5;
+
+  font-weight: 600;
+}
+
+
+.sidenav-item.active mat-icon {
+  color: #3f51b5;
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+.logout-item {
+  color: #64748b;
+}
+
+
+.logout-item:hover {
+  background: #fff1f2;
+
+  color: #e11d48;
+}
+
+
+.logout-item:hover mat-icon {
+  color: #e11d48;
+}
+
+
+/* =========================================================
+   SIDEBAR FOOTER
+   ========================================================= */
+
+.sidenav-footer {
+  margin-top: auto;
+
+  margin-left: 14px;
+  margin-right: 14px;
+  margin-bottom: 18px;
+
+  padding: 17px;
+
+  border-radius: 14px;
+
+  background: #f5f7ff;
+
+  border: 1px solid #e8ebf8;
+}
+
+
+.footer-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.footer-icon {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #3f51b5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.footer-icon mat-icon {
+  font-size: 19px;
+
+  width: 19px;
+  height: 19px;
+}
+
+
+.footer-title {
+  font-size: 13px;
+
+  font-weight: 700;
+
+  color: #27324a;
+}
+
+
+.footer-subtitle {
+  margin-top: 3px;
+
+  font-size: 10px;
+
+  color: #8b94a7;
+}
+
+
+/* =========================================================
+   SOCIAL LINKS
+   ========================================================= */
+
+.social-links {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 15px;
+}
+
+
+.social-link {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e5ed;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #475569;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.social-link:hover {
+  background: #eef2ff;
+
+  border-color: #c7d2fe;
+
+  color: #3f51b5;
+
+  transform: translateY(-2px);
+}
+
+
+.social-link svg {
+  width: 17px;
+
+  height: 17px;
+
+  fill: currentColor;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.manager-content {
+  width: 100%;
+
+  height: 100vh;
+
+  overflow-y: auto;
+
+  background: #f7f8fc;
+}
+
+
+/* =========================================================
+   TOP TOOLBAR
+   ========================================================= */
+
+.manager-toolbar {
+  height: 70px;
+
+  min-height: 70px;
+
+  padding: 0 28px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e9ebf0;
+
+  box-shadow:
+    0 1px 4px rgba(15, 23, 42, 0.03);
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   HAMBURGER BUTTON
+   ========================================================= */
+
+.menu-button {
+  width: 42px;
+  height: 42px;
+
+  margin-right: 10px;
+
+  color: #334155;
+
+  border-radius: 10px;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+
+.menu-button:hover {
+  background: #f1f5f9;
+
+  color: #3f51b5;
+}
+
+
+.menu-button mat-icon {
+  font-size: 24px;
+
+  width: 24px;
+  height: 24px;
+}
+
+
+/* =========================================================
+   APPLICATION TITLE
+   ========================================================= */
+
+.app-title {
+  font-size: 17px;
+
+  font-weight: 700;
+
+  color: #172033;
+
+  letter-spacing: -0.2px;
+}
+
+
+.toolbar-spacer {
+  flex: 1;
+}
+
+
+/* =========================================================
+   TOOLBAR LOGOUT
+   ========================================================= */
+
+.toolbar-logout {
+  height: 40px;
+
+  padding: 0 18px;
+
+  border-radius: 9px;
+
+  font-family: 'Inter', sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  box-shadow: none;
+}
+
+
+.toolbar-logout mat-icon {
+  margin-right: 6px;
+
+  font-size: 19px;
+
+  width: 19px;
+
+  height: 19px;
+}
+
+
+/* =========================================================
+   PAGE CONTENT
+   ========================================================= */
+
+.page-content {
+  min-height: calc(100vh - 70px);
+
+  padding: 28px;
+
+  background: #f7f8fc;
+}
+
+
+/* =========================================================
+   DRAWER BACKDROP
+   ========================================================= */
+
+::ng-deep .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  background: rgba(15, 23, 42, 0.48);
+}
+
+
+/* =========================================================
+   MATERIAL DRAWER
+   ========================================================= */
+
+::ng-deep .mat-drawer-inner-container {
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .manager-sidenav {
+    width: 275px;
+  }
+
+
+  .manager-toolbar {
+    padding: 0 16px;
+  }
+
+
+  .page-content {
+    padding: 18px;
+  }
+
+
+  .toolbar-logout {
+    padding: 0 12px;
+  }
+
+
+  .toolbar-logout span {
+    display: none;
+  }
+
+
+  .toolbar-logout mat-icon {
+    margin-right: 0;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .manager-sidenav {
+    width: 265px;
+  }
+
+
+  .app-title {
+    font-size: 15px;
+  }
+
+
+  .page-content {
+    padding: 14px;
+  }
+
+}

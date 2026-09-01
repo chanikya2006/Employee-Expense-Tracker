@@ -1,0 +1,317 @@
+
+  
+    <!-- ============================= -->
+    <!-- DASHBOARD -->
+    <!-- ============================= -->
+
+    <main class="dashboard">
+
+
+      <!-- ============================= -->
+      <!-- DASHBOARD HEADER -->
+      <!-- ============================= -->
+
+      <div class="dashboard-header">
+
+        <div>
+
+          <h1>
+            Manager Dashboard
+          </h1>
+
+          <p>
+            Overview of employees and expenses
+          </p>
+
+        </div>
+
+
+        <!-- ADD EMPLOYEE -->
+
+        <button
+          mat-raised-button
+          color="primary"
+          class="add-employee-button"
+          (click)="onAddEmployee()"
+        >
+
+          <mat-icon>
+            person_add
+          </mat-icon>
+
+          Add Employee
+
+        </button>
+
+      </div>
+
+
+      <!-- ============================= -->
+      <!-- SUMMARY CARDS -->
+      <!-- ============================= -->
+
+      <div class="summary-grid">
+
+
+        <!-- TOTAL EMPLOYEES -->
+
+        <mat-card class="summary-card">
+
+          <div class="summary-icon">
+
+            <mat-icon>
+              groups
+            </mat-icon>
+
+          </div>
+
+
+          <div class="summary-info">
+
+            <span class="summary-label">
+              Total Employees
+            </span>
+
+
+            <strong>
+              {{ totalEmployees }}
+            </strong>
+
+          </div>
+
+        </mat-card>
+
+
+
+        <!-- ACTIVE EMPLOYEES -->
+
+        <mat-card class="summary-card">
+
+          <div class="summary-icon">
+
+            <mat-icon>
+              person
+            </mat-icon>
+
+          </div>
+
+
+          <div class="summary-info">
+
+            <span class="summary-label">
+              Active Employees
+            </span>
+
+
+            <strong>
+              {{ activeEmployees }}
+            </strong>
+
+          </div>
+
+        </mat-card>
+
+
+
+        <!-- TOTAL SALARIES -->
+
+        <mat-card class="summary-card">
+
+          <div class="summary-icon">
+
+            <mat-icon>
+              account_balance_wallet
+            </mat-icon>
+
+          </div>
+
+
+          <div class="summary-info">
+
+            <span class="summary-label">
+              Total Salaries
+            </span>
+
+
+            <strong>
+              ₹{{ totalSalaries | number }}
+            </strong>
+
+          </div>
+
+        </mat-card>
+
+
+
+        <!-- TOTAL EXPENSES -->
+
+        <mat-card class="summary-card">
+
+          <div class="summary-icon">
+
+            <mat-icon>
+              payments
+            </mat-icon>
+
+          </div>
+
+
+          <div class="summary-info">
+
+            <span class="summary-label">
+              Total Expenses
+            </span>
+
+
+            <strong>
+              ₹{{ totalExpenses | number }}
+            </strong>
+
+          </div>
+
+        </mat-card>
+
+      </div>
+
+
+
+      <!-- ============================= -->
+      <!-- ANALYTICS ROW -->
+      <!-- ============================= -->
+
+      <div class="analytics-grid">
+
+
+        <!-- EXPENSE BY CATEGORY -->
+
+        <mat-card class="analytics-card">
+
+          <mat-card-header>
+
+            <mat-card-title>
+              Expense by Category
+            </mat-card-title>
+
+          </mat-card-header>
+
+
+          <mat-card-content>
+
+            <div class="chart-container">
+
+             <canvas
+             baseChart
+             [type]="categoryChartType"
+             [data]="categoryChartData"
+             [options]="categoryChartOptions">
+              </canvas>
+
+         </div>
+          </mat-card-content>
+
+        </mat-card>
+
+
+
+        <!-- EXPENSE BY DEPARTMENT -->
+
+        <mat-card class="analytics-card">
+
+          <mat-card-header>
+
+            <mat-card-title>
+              Expense by Department
+            </mat-card-title>
+
+          </mat-card-header>
+
+
+          <mat-card-content>
+
+            <div class="chart-container">
+
+            <canvas
+             baseChart
+             [type]="departmentChartType"
+            [data]="departmentChartData"
+           [options]="departmentChartOptions">
+          </canvas>
+
+          </div>
+          </mat-card-content>
+
+        </mat-card>
+
+      </div>
+
+
+
+      <!-- ============================= -->
+      <!-- MONTHLY EXPENSE TREND -->
+      <!-- ============================= -->
+
+      <mat-card class="large-analytics-card">
+
+        <mat-card-header>
+
+          <mat-card-title>
+            Monthly Expense Trend
+          </mat-card-title>
+
+        </mat-card-header>
+
+
+        <mat-card-content>
+
+            <div class="chart-container monthly-chart">
+
+           <canvas
+            baseChart
+            [type]="monthlyChartType"
+            [data]="monthlyChartData"
+            [options]="monthlyChartOptions">
+           </canvas>
+
+         </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+
+      <!-- ============================= -->
+      <!-- TOP EMPLOYEE EXPENSES -->
+      <!-- ============================= -->
+
+      <mat-card class="large-analytics-card">
+
+        <mat-card-header>
+
+          <mat-card-title>
+            Employees with Highest Expenses
+          </mat-card-title>
+
+        </mat-card-header>
+
+
+        <mat-card-content>
+       <div class="chart-container employee-chart">
+
+          <canvas
+           baseChart
+           [type]="employeeChartType"
+           [data]="employeeChartData"
+           [options]="employeeChartOptions">
+         </canvas>
+
+      </div>
+
+        </mat-card-content>
+
+      </mat-card>
+
+
+    </main>
+
+  

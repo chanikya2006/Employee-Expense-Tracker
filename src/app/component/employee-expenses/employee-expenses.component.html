@@ -1,0 +1,693 @@
+<div class="expenses-container">
+
+  <!-- ================================= -->
+  <!-- PAGE HEADER -->
+  <!-- ================================= -->
+
+  <div class="page-header">
+
+    <div>
+
+      <h1>Employee Expenses</h1>
+
+      <p>
+        Manage and monitor all employee expenses
+      </p>
+
+    </div>
+
+
+    <!-- ADD EXPENSE BUTTON -->
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      (click)="openAddExpense()"
+    >
+
+      <mat-icon>
+        add
+      </mat-icon>
+
+      Add Expense
+
+    </button>
+
+  </div>
+
+
+  <!-- ================================= -->
+  <!-- ADD EXPENSE FORM -->
+  <!-- ================================= -->
+
+  <mat-card
+    class="add-expense-card"
+    *ngIf="isAddingExpense"
+  >
+
+    <div class="form-header">
+
+      <div>
+
+        <h2>
+          Add Employee Expense
+        </h2>
+
+        <p>
+          Enter the expense details below
+        </p>
+
+      </div>
+
+
+      <button
+        mat-icon-button
+        type="button"
+        (click)="cancelAddExpense()"
+        [disabled]="isSubmitting"
+      >
+
+        <mat-icon>
+          close
+        </mat-icon>
+
+      </button>
+
+    </div>
+
+
+    <form
+      [formGroup]="expenseForm"
+      class="expense-form"
+    >
+
+
+      <!-- ================================= -->
+      <!-- EMPLOYEE -->
+      <!-- ================================= -->
+
+      <mat-form-field
+        appearance="outline"
+      >
+
+        <mat-label>
+          Employee
+        </mat-label>
+
+        <mat-select
+          formControlName="employeeId"
+        >
+
+          <mat-option
+            *ngFor="let employee of employees"
+            [value]="employee._id"
+          >
+
+            {{ employee.name }}
+            ({{ employee.employeeId }})
+
+          </mat-option>
+
+        </mat-select>
+
+
+        <mat-error
+          *ngIf="
+            expenseForm.get('employeeId')?.hasError('required')
+          "
+        >
+
+          Please select an employee
+
+        </mat-error>
+
+      </mat-form-field>
+
+
+
+      <!-- ================================= -->
+      <!-- AMOUNT -->
+      <!-- ================================= -->
+
+      <mat-form-field
+        appearance="outline"
+      >
+
+        <mat-label>
+          Amount
+        </mat-label>
+
+        <span matTextPrefix>
+          ₹&nbsp;
+        </span>
+
+        <input
+          matInput
+          type="number"
+          formControlName="amount"
+          placeholder="5000"
+        />
+
+
+        <mat-error
+          *ngIf="
+            expenseForm.get('amount')?.hasError('required')
+          "
+        >
+
+          Amount is required
+
+        </mat-error>
+
+
+        <mat-error
+          *ngIf="
+            expenseForm.get('amount')?.hasError('min')
+          "
+        >
+
+          Amount must be greater than 0
+
+        </mat-error>
+
+      </mat-form-field>
+
+
+
+      <!-- ================================= -->
+      <!-- CATEGORY -->
+      <!-- ================================= -->
+
+      <mat-form-field
+        appearance="outline"
+      >
+
+        <mat-label>
+          Category
+        </mat-label>
+
+        <mat-select
+          formControlName="category"
+        >
+
+          <mat-option
+            *ngFor="let category of categories"
+            [value]="category"
+          >
+
+            {{ category }}
+
+          </mat-option>
+
+        </mat-select>
+
+
+        <mat-error
+          *ngIf="
+            expenseForm.get('category')?.hasError('required')
+          "
+        >
+
+          Please select a category
+
+        </mat-error>
+
+      </mat-form-field>
+
+
+
+      <!-- ================================= -->
+      <!-- EXPENSE DATE -->
+      <!-- ================================= -->
+
+      <mat-form-field
+        appearance="outline"
+      >
+
+        <mat-label>
+          Expense Date
+        </mat-label>
+
+        <input
+          matInput
+          type="date"
+          formControlName="expenseDate"
+        />
+
+
+        <mat-error
+          *ngIf="
+            expenseForm.get('expenseDate')?.hasError('required')
+          "
+        >
+
+          Expense date is required
+
+        </mat-error>
+
+      </mat-form-field>
+
+
+
+      <!-- ================================= -->
+      <!-- DESCRIPTION -->
+      <!-- ================================= -->
+
+      <mat-form-field
+        appearance="outline"
+        class="description-field"
+      >
+
+        <mat-label>
+          Description
+        </mat-label>
+
+        <textarea
+          matInput
+          rows="3"
+          formControlName="description"
+          placeholder="Enter expense description"
+        ></textarea>
+
+      </mat-form-field>
+
+
+
+      <!-- ================================= -->
+      <!-- FORM BUTTONS -->
+      <!-- ================================= -->
+
+      <div class="form-actions">
+
+        <button
+          mat-button
+          type="button"
+          (click)="cancelAddExpense()"
+          [disabled]="isSubmitting"
+        >
+
+          Cancel
+
+        </button>
+
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="button"
+          (click)="addExpense()"
+          [disabled]="isSubmitting"
+        >
+
+          <mat-icon>
+            save
+          </mat-icon>
+
+          {{ isSubmitting ? 'Saving...' : 'Save Expense' }}
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </mat-card>
+
+
+
+  <!-- ================================= -->
+  <!-- SUMMARY -->
+  <!-- ================================= -->
+
+  <div class="summary-card">
+
+    <div class="summary-icon">
+
+      <mat-icon>
+        payments
+      </mat-icon>
+
+    </div>
+
+    <div>
+
+      <span>
+        Total Expenses
+      </span>
+
+      <strong>
+        ₹{{ totalExpenses | number }}
+      </strong>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ================================= -->
+  <!-- FILTERS -->
+  <!-- ================================= -->
+
+  <mat-card class="filter-card">
+
+    <h2>
+      Filter Expenses
+    </h2>
+
+
+    <div class="filter-row">
+
+
+      <!-- SEARCH -->
+
+      <mat-form-field
+        appearance="outline"
+      >
+
+        <mat-label>
+          Search
+        </mat-label>
+
+        <input
+          matInput
+          [(ngModel)]="searchText"
+          (input)="applyFilters()"
+          placeholder="Employee / ID / description"
+        >
+
+        <mat-icon matSuffix>
+          search
+        </mat-icon>
+
+      </mat-form-field>
+
+
+
+      <!-- EMPLOYEE -->
+
+      <mat-form-field
+        appearance="outline"
+      >
+
+        <mat-label>
+          Employee
+        </mat-label>
+
+        <mat-select
+          [(ngModel)]="selectedEmployee"
+          (selectionChange)="applyFilters()"
+        >
+
+          <mat-option value="">
+            All Employees
+          </mat-option>
+
+          <mat-option
+            *ngFor="let employee of employees"
+            [value]="employee._id"
+          >
+
+            {{ employee.name }}
+            ({{ employee.employeeId }})
+
+          </mat-option>
+
+        </mat-select>
+
+      </mat-form-field>
+
+
+
+      <!-- CATEGORY -->
+
+      <mat-form-field
+        appearance="outline"
+      >
+
+        <mat-label>
+          Category
+        </mat-label>
+
+        <mat-select
+          [(ngModel)]="selectedCategory"
+          (selectionChange)="applyFilters()"
+        >
+
+          <mat-option value="">
+            All Categories
+          </mat-option>
+
+          <mat-option
+            *ngFor="let category of categories"
+            [value]="category"
+          >
+
+            {{ category }}
+
+          </mat-option>
+
+        </mat-select>
+
+      </mat-form-field>
+
+
+
+      <!-- CLEAR -->
+
+      <button
+        mat-stroked-button
+        color="primary"
+        type="button"
+        (click)="clearFilters()"
+      >
+
+        <mat-icon>
+          filter_alt_off
+        </mat-icon>
+
+        Clear
+
+      </button>
+
+    </div>
+
+  </mat-card>
+
+
+
+  <!-- ================================= -->
+  <!-- EXPENSE TABLE -->
+  <!-- ================================= -->
+
+  <mat-card class="table-card">
+
+    <div class="table-header">
+
+      <div>
+
+        <h2>
+          All Expenses
+        </h2>
+
+        <span>
+          {{ filteredExpenses.length }}
+          expense(s)
+        </span>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- LOADING -->
+
+    <div
+      class="loading"
+      *ngIf="isLoading"
+    >
+
+      <mat-spinner diameter="40"></mat-spinner>
+
+      <p>
+        Loading expenses...
+      </p>
+
+    </div>
+
+
+
+    <!-- TABLE -->
+
+    <div
+      class="table-wrapper"
+      *ngIf="!isLoading"
+    >
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Employee
+            </th>
+
+            <th>
+              Employee ID
+            </th>
+
+            <th>
+              Department
+            </th>
+
+            <th>
+              Category
+            </th>
+
+            <th>
+              Description
+            </th>
+
+            <th>
+              Amount
+            </th>
+
+            <th>
+              Date
+            </th>
+
+            <th>
+              Actions
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody>
+
+          <tr
+            *ngFor="
+              let expense of filteredExpenses
+            "
+          >
+
+            <td>
+
+              <strong>
+                {{ expense.employee?.name }}
+              </strong>
+
+            </td>
+
+
+            <td>
+
+              {{ expense.employee?.employeeId }}
+
+            </td>
+
+
+            <td>
+
+              {{ expense.employee?.department }}
+
+            </td>
+
+
+            <td>
+
+              <span class="category">
+
+                {{ expense.category }}
+
+              </span>
+
+            </td>
+
+
+            <td>
+
+              {{ expense.description || '-' }}
+
+            </td>
+
+
+            <td>
+
+              <strong class="amount">
+
+                ₹{{ expense.amount | number }}
+
+              </strong>
+
+            </td>
+
+
+            <td>
+
+              {{ expense.expenseDate | date:'dd-MM-yyyy' }}
+
+            </td>
+
+
+            <td>
+
+              <button
+                mat-icon-button
+                color="warn"
+                matTooltip="Delete Expense"
+                (click)="deleteExpense(expense._id)"
+              >
+
+                <mat-icon>
+                  delete
+                </mat-icon>
+
+              </button>
+
+            </td>
+
+          </tr>
+
+
+
+          <!-- EMPTY -->
+
+          <tr
+            *ngIf="
+              filteredExpenses.length === 0
+            "
+          >
+
+            <td
+              colspan="8"
+              class="empty"
+            >
+
+              <mat-icon>
+                receipt_long
+              </mat-icon>
+
+              <p>
+                No expenses found.
+              </p>
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </mat-card>
+
+</div>

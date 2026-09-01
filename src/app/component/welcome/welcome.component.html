@@ -1,0 +1,273 @@
+<div class="welcome-page">
+
+  <!-- ========================================= -->
+  <!-- LEFT SIDEBAR -->
+  <!-- ========================================= -->
+
+  <aside class="welcome-sidebar">
+
+    <div class="sidebar-brand">
+
+      <div class="brand-icon">
+        <mat-icon>account_balance</mat-icon>
+      </div>
+
+      <div>
+        <h1>Expense Tracker</h1>
+        <span>Manager Portal</span>
+      </div>
+
+    </div>
+
+
+    <div class="sidebar-description">
+
+      <h2>
+        Manage expenses.
+        <br>
+        Track smarter.
+      </h2>
+
+      <p>
+        A simple and powerful platform to manage
+        employees, salaries and business expenses
+        from one place.
+      </p>
+
+    </div>
+
+
+    <div class="sidebar-features">
+
+      <div class="feature-item">
+
+        <div class="feature-icon">
+          <mat-icon>groups</mat-icon>
+        </div>
+
+        <div>
+          <strong>Employee Management</strong>
+          <span>Manage employees and salaries</span>
+        </div>
+
+      </div>
+
+
+      <div class="feature-item">
+
+        <div class="feature-icon">
+          <mat-icon>receipt_long</mat-icon>
+        </div>
+
+        <div>
+          <strong>Expense Tracking</strong>
+          <span>Track and monitor every expense</span>
+        </div>
+
+      </div>
+
+
+      <div class="feature-item">
+
+        <div class="feature-icon">
+          <mat-icon>analytics</mat-icon>
+        </div>
+
+        <div>
+          <strong>Analytics</strong>
+          <span>Understand spending patterns</span>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+    <div class="sidebar-bottom">
+
+      <button
+        mat-raised-button
+        class="sidebar-signup"
+        (click)="onSignup()"
+      >
+
+        <mat-icon>
+          person_add
+        </mat-icon>
+
+        Create an Account
+
+      </button>
+
+
+      <!-- SOCIAL -->
+
+      <div class="social-section">
+
+        <span>
+          Connect with me
+        </span>
+
+        <div class="social-links">
+
+          <!-- GITHUB -->
+
+          <a
+            href="https://github.com/chanikya2006"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            aria-label="GitHub"
+          >
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.72.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.38-3.37-1.38-.46-1.2-1.11-1.52-1.11-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.59 2.35 1.13 2.92.86.09-.67.35-1.13.64-1.39-2.22-.26-4.55-1.15-4.55-5.08 0-1.12.39-2.03 1.03-2.75.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.2 9.2 0 0 1 12 7.16c.85 0 1.7.12 2.5.35 1.9-1.33 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.33 4.81-4.56 5.07.36.32.68.94.68 1.9v2.82c0 .27.18.59.69.49A10.28 10.28 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"
+              />
+
+            </svg>
+
+          </a>
+
+
+          <!-- LINKEDIN -->
+
+          <a
+            href="https://www.linkedin.com/in/chanikya-ganteda-73bb9329a"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link"
+            aria-label="LinkedIn"
+          >
+
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.28 2.38 4.28 5.48v6.26zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM3.54 20.45H7.1V9H3.54v11.45z"
+              />
+
+            </svg>
+
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="version">
+        Expense Tracker v1.1.0
+      </div>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ========================================= -->
+  <!-- RIGHT SIDE -->
+  <!-- ========================================= -->
+
+  <main class="welcome-content">
+
+    <!-- TOP BAR -->
+
+    <header class="welcome-toolbar">
+
+      <div class="mobile-brand">
+
+        <mat-icon>
+          account_balance
+        </mat-icon>
+
+        <span>
+          Expense Tracker
+        </span>
+
+      </div>
+
+    </header>
+
+
+    <!-- ========================================= -->
+    <!-- LOGIN AREA -->
+    <!-- ========================================= -->
+
+    <section class="login-section">
+
+      <div class="login-wrapper">
+
+
+        <!-- LOGIN HEADER -->
+
+        <div class="login-header">
+
+          <div class="login-icon">
+
+            <mat-icon>
+              lock
+            </mat-icon>
+
+          </div>
+
+          <h2>
+            Welcome Back
+          </h2>
+
+          <p>
+            Login to your Expense Tracker account
+          </p>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- EXISTING LOGIN COMPONENT -->
+        <!-- ========================================= -->
+
+        <div class="login-form-container">
+
+          <app-login></app-login>
+
+        </div>
+
+
+        <!-- ========================================= -->
+        <!-- SIGN UP -->
+        <!-- ========================================= -->
+
+        <div class="signup-prompt">
+
+          <span>
+            Don't have an account?
+          </span>
+
+          <button
+            mat-button
+            type="button"
+            (click)="onSignup()"
+          >
+
+            Sign Up
+
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
